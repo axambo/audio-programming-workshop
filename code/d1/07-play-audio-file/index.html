@@ -14,6 +14,7 @@
 <script>
     var player, context; 
     document.querySelector("#button1").addEventListener('click', function() {
+    var AudioContext = window.AudioContext || window.webkitAudioContext;    
     context = new AudioContext();
     player = context.createBufferSource();
     player.loop = true;
@@ -33,25 +34,25 @@
 
 // Method 1 
 
-//   function loadSound(url) {
-//   var request = new XMLHttpRequest();
-//   request.open('GET', url, true);
-//   request.responseType = 'arraybuffer';
+  function loadSound(soundfile) {
+  var request = new XMLHttpRequest();
+  request.open('GET', soundfile, true);
+  request.responseType = 'arraybuffer';
 
-//   // Decode asynchronously
-//   request.onload = function() {
-//     context.decodeAudioData(request.response, function(buffer) {
-//       player.buffer = buffer;
-//       player.start();
-//     }, onError);
-//   }
-//   request.send();
+  // Decode asynchronously
+  request.onload = function() {
+    context.decodeAudioData(request.response, function(buffer) {
+      player.buffer = buffer;
+      player.start();
+    }, onError);
+  }
+  request.send();
   
-// }
+}
 
-// function onError(){
-//   console.log("The file could not be loaded");
-// }
+function onError(){
+  console.log("The file could not be loaded");
+}
 
 // Method 2
 

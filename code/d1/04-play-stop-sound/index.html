@@ -12,6 +12,7 @@
 <script>
     var oscillator; 
     document.querySelector("#button1").addEventListener('click', function() {
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
     var context = new AudioContext();
     oscillator = context.createOscillator();
     oscillator.connect(context.destination);
