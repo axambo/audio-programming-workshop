@@ -2,7 +2,7 @@
 
 A workshop led by Anna Xambó (anna.xambo@ntnu.no).
 
-The exercises and slides for the Audio Programming Course delivered at the [MCT program](https://www.ntnu.edu/studies/mmct) (NTNU-UiO).
+The code and slides for the Audio Programming Course delivered at the [MCT program](https://www.ntnu.edu/studies/mmct) (NTNU-UiO). This course is based on Web Audio and JavaScript.
 
 ## License
 

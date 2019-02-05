@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+  
+</head>
+
+<body>
+  
+<button type="button" id="button1">Start</button>
+<button type="button" id="button2">Stop</button>
+
+<script>
+    var player, context; 
+    document.querySelector("#button1").addEventListener('click', function() {
+    context = new AudioContext();
+    player = context.createBufferSource();
+    player.loop = true;
+
+    var volume = context.createGain();
+    volume.gain.value = 1;
+
+    player.connect(volume);
+    volume.connect(context.destination);
+
+    loadSound("sound.mp3");
+
+  });
+  document.querySelector("#button2").addEventListener('click', function() {
+    player.stop();
+  });
+
+// Method 1 
+
+//   function loadSound(url) {
+//   var request = new XMLHttpRequest();
+//   request.open('GET', url, true);
+//   request.responseType = 'arraybuffer';
+
+//   // Decode asynchronously
+//   request.onload = function() {
+//     context.decodeAudioData(request.response, function(buffer) {
+//       player.buffer = buffer;
+//       player.start();
+//     }, onError);
+//   }
+//   request.send();
+  
+// }
+
+// function onError(){
+//   console.log("The file could not be loaded");
+// }
+
+// Method 2
+
+// function loadSound(url) {
+
+//   var request = new XMLHttpRequest();
+//   request.open('GET', url, true);
+//   request.responseType = 'arraybuffer';
+
+//   request.addEventListener("load", function(){
+//     if (request.status===200){
+//     console.log("success");
+//     context.decodeAudioData(request.response, function(buffer) {
+//       player.buffer = buffer;
+//       player.start();
+//     })
+//     } else {
+//     console.log("failed");
+//     }
+//   });
+//   request.send();
+// }  
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+
+<script>
+window.onload = function() {
+  this.addEventListener('mousemove', function(e) {
+  var x = e.clientX;
+  var y = e.clientY;
+  var width = window.innerWidth;
+  //console.log(width);
+  var widthnor = (x/width); // 0-1 range
+  console.log(widthnor);
+  //console.log(x, y);
+  if (playing == 1) {
+    //oscillator.frequency.value = x;
+    oscillator.frequency.value = widthnor*1000;
+  }
+  });
+}
+</script>  
+</head>
+
+<body>
+  
+<button type="button" id="button1">Start</button>
+<button type="button" id="button2">Stop</button>
+
+<script>
+    var oscillator; 
+    var playing = 0;
+    document.querySelector("#button1").addEventListener('click', function() {
+    var context = new AudioContext();
+    oscillator = context.createOscillator();
+    oscillator.frequency.value = 0;
+    oscillator.start();
+
+    var volume = context.createGain();
+    volume.gain.value = 0.1;
+
+    oscillator.connect(volume);
+    volume.connect(context.destination);
+
+    playing = 1;  
+
+  });
+  document.querySelector("#button2").addEventListener('click', function() {
+    oscillator.stop();
+    playing = 0;
+  });
+
+</script>
+
+</body>
+</html>

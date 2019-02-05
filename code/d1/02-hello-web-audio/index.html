@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+
+  <script type="text/javascript">
+  // This was the code that you would use in the past to start and app of Web Audio, it still works in Firefox:
+  // window.onload = function() {
+  //  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  //  const context = new AudioContext();
+  // }
+  </script>
+</head>
+<body>
+
+<button type="button" id="button1">Play</button>
+
+<!-- This is the new way of starting an app of Web Audio -->
+<!-- Recommended to use this template for new projects -->
+<script>
+    document.querySelector("button").addEventListener('click', function() {
+    var context = new AudioContext();
+    // here to add audio nodes...
+  });
+</script>
+
+
+</body>
+</html>
