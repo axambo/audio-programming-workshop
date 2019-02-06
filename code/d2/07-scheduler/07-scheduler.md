@@ -1,4 +1,4 @@
-# Exercise: Set Target at Time
+# Exercise: Scheduler
 
 **Source**: [https://sonoport.github.io/web-audio-clock.html](https://sonoport.github.io/web-audio-clock.html)
 (note: see this nice [sequencer](http://aqilahmisuary.github.io/sequencer/) from the same link)

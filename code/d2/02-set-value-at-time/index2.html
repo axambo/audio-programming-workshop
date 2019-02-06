@@ -13,19 +13,11 @@
 
 <script>
     var AudioContext = window.AudioContext || window.webkitAudioContext;
-    var oscillator, oscillator2, volume, currgain, context; 
+    var oscillator, volume, currgain, context; 
     document.querySelector("#button1").addEventListener('click', function() {
     context = new AudioContext();
     oscillator = context.createOscillator();
-    oscillator2 = context.createOscillator();
     oscillator.frequency.value = 440;
-    oscillator2.frequency.value = 550;
-
-    oscillator.frequency.setValueAtTime(oscillator.frequency.value, context.currentTime); //____Set initial values!
-    oscillator.frequency.linearRampToValueAtTime(3000, context.currentTime + 3);
-    oscillator2.frequency.setValueAtTime(oscillator2.frequency.value, context.currentTime); //____Set initial values!
-    oscillator2.frequency.linearRampToValueAtTime(4000, context.currentTime + 3);
-
     oscillator.start();
 
     volume = context.createGain();
@@ -37,13 +29,17 @@
   });
 
   document.querySelector("#button-time-plus").addEventListener('click', function() {
-    currgain += 0.25;
+    if(currgain < 1){
+      currgain += 0.25;
+    }
     volume.gain.setValueAtTime(currgain, context.currentTime + 1);
     console.log("volume: " + currgain);
   });
 
   document.querySelector("#button-time-minus").addEventListener('click', function() {
-    currgain -= 0.25;
+    if(currgain > 0){
+      currgain -= 0.25;
+    }
     volume.gain.setValueAtTime(currgain, context.currentTime + 1);
     console.log("volume: " + currgain);    
   });

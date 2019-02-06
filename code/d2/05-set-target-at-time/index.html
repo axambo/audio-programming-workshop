@@ -20,7 +20,7 @@
     oscillator.frequency.value = 440;
     oscillator.frequency.setValueAtTime(oscillator.frequency.value, context.
   currentTime); // Set initial values
-    oscillator.frequency.setTargetAtTime(3000, context.currentTime, 2);
+    oscillator.frequency.setTargetAtTime(3000, context.currentTime + 4, 2);
     oscillator.start();
 
     volume = context.createGain();
