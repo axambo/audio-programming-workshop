@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+  <script src="Tone.js"></script>
+</head>
+<body>
+
+<button type="button" id="button1">Start</button>
+<button type="button" id="button2">Stop</button>
+
+<script>
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    var oscillator; 
+
+    document.querySelector("#button1").addEventListener('click', function() {
+    context = new AudioContext();
+    
+    // sound here
+    //create a synth and connect it to the master output (your speakers)
+    var synth = new Tone.Synth().toMaster();
+
+    //play a middle 'C' for the duration of an 8th note
+    synth.triggerAttackRelease("C4", "8n");
+     
+  });
+
+  document.querySelector("#button2").addEventListener('click', function() {
+    //oscillator.stop();
+  });
+
+
+</script>
+
+
+</body>
+</html>

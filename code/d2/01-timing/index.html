@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+</head>
+<body>
+
+<button type="button" id="button1">Start</button>
+<button type="button" id="button2">Stop</button>
+
+<script>
+
+var oscillator;
+
+    document.querySelector("#button1").addEventListener('click', function() {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const context = new AudioContext();
+    let now = context.currentTime;
+    oscillator = context.createOscillator();
+    oscillator.connect(context.destination);
+    // oscillator.frequency.value = 440;
+    oscillator.frequency.setValueAtTime(440, now);
+    oscillator.frequency.setValueAtTime(550, now + 1);
+    oscillator.frequency.setValueAtTime(660, now + 2);        
+    oscillator.type = "triangle"; // "sine", "square", "sawtooth", "triangle"
+    oscillator.start();
+  });
+
+  document.querySelector("#button2").addEventListener('click', function() {
+    oscillator.stop();
+  });
+
+
+</script>
+
+
+</body>
+</html>

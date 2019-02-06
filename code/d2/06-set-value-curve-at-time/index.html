@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+</head>
+<body>
+
+<button type="button" id="button1">Start</button>
+<button type="button" id="button-time-plus">+ Volume</button>
+<button type="button" id="button-time-minus">- Volume</button>
+<button type="button" id="button2">Stop</button>
+
+<script>
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    var oscillator, volume, currgain, context; 
+
+    var waveArray = new Float32Array(10);
+    waveArray[0] = 100;
+    waveArray[1] = 500;
+    waveArray[2] = 100;
+    waveArray[3] = 500;
+    waveArray[4] = 100;
+    waveArray[5] = 500;
+    waveArray[6] = 100;
+    waveArray[7] = 500;
+    waveArray[8] = 100;
+    waveArray[9] = 500;
+
+    document.querySelector("#button1").addEventListener('click', function() {
+    context = new AudioContext();
+    oscillator = context.createOscillator();
+    oscillator.frequency.value = 440;
+    oscillator.frequency.setValueAtTime(oscillator.frequency.value, context.
+  currentTime); // Set initial values
+  oscillator.frequency.setValueCurveAtTime(waveArray, context.
+  currentTime + 1, 3);
+    //oscillator.frequency.setTargetAtTime(3000, context.currentTime, 2);
+    oscillator.start();
+
+    volume = context.createGain();
+    volume.gain.value = 0.5;
+    currgain = volume.gain.value;
+
+    oscillator.connect(volume);
+    volume.connect(context.destination);
+  });
+
+  document.querySelector("#button-time-plus").addEventListener('click', function() {
+    currgain += 0.25;
+    volume.gain.setValueAtTime(currgain, context.currentTime + 1);
+    console.log("volume: " + currgain);
+  });
+
+  document.querySelector("#button-time-minus").addEventListener('click', function() {
+    currgain -= 0.25;
+    volume.gain.setValueAtTime(currgain, context.currentTime + 1);
+    console.log("volume: " + currgain);    
+  });
+
+  document.querySelector("#button2").addEventListener('click', function() {
+    oscillator.stop();
+  });
+
+</script>
+
+
+</body>
+</html>

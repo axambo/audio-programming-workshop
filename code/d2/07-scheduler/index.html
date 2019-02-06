@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+</head>
+<body>
+
+<button type="button" id="button1">Start</button>
+<button type="button" id="button2">Stop</button>
+
+<script>
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    var oscillator, volume, currgain, context; 
+    var nextNotetime;
+    var timerID;
+
+    document.querySelector("#button1").addEventListener('click', function() {
+    context = new AudioContext();
+    nextNotetime = context.currentTime;
+    // oscillator = context.createOscillator();
+    // oscillator.frequency.value = 440;
+    // oscillator.start();
+
+    // volume = context.createGain();
+    // volume.gain.value = 0.5;
+    // currgain = volume.gain.value;
+
+     
+    scheduler();
+
+  });
+
+  document.querySelector("#button2").addEventListener('click', function() {
+    oscillator.stop();
+  });
+
+function scheduler() {
+
+while(nextNotetime < context.currentTime + 0.1) {
+    
+    nextNotetime += 0.5;
+    console.log("nextNote: " + nextNotetime);
+    playSound(nextNotetime);
+}
+
+timerID = window.setTimeout(scheduler, 50.0);
+};  
+
+function playSound(time) {
+  console.log("playsound");
+  oscillator = context.createOscillator();
+  oscillator.frequency.value = 200;
+  oscillator.start(time);
+  oscillator.stop(time + 0.1);
+  oscillator.connect(context.destination);  
+};
+
+</script>
+
+
+</body>
+</html>
