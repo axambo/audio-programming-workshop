@@ -41,24 +41,23 @@
 \frametitle{Survey}
 \url{https://goo.gl/C1gkae}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Start setting up...}
-\url{https://github.com/axambo/audio-programming-workshop/} 
-\\
-Go to: code / d1 / 00-setting-up / checklist.md
-
+Download: \url{https://github.com/axambo/audio-programming-workshop/} 
+\vspace{10 mm}
+Go to: \textrm{code/d1/00-setting-up/checklist.md}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Warm-up Activity}
 Mind map exercise: What is Web Audio? Pros and Cons?
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Mind Map}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Pros}
 \begin{itemize}
@@ -72,7 +71,7 @@ Mind map exercise: What is Web Audio? Pros and Cons?
 \item Multiple online resources available.
 \end{itemize}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Cons}
 \begin{itemize}
@@ -83,26 +82,27 @@ Mind map exercise: What is Web Audio? Pros and Cons?
 \item Ephemerality: sustainability, maintenance and variability of platforms (form factor, input method, computational power...).
 \end{itemize}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{This Week: The Fundamentals (40\% Individual Work)}
 \begin{itemize}
 \item Syllabus: \url{https://uio.instructure.com/courses/17406}
-\item Assignment 1 (Total grade: 10\%): Presentation WAC paper (individual) -- day 3 (February 7, 2019) or 4 (February 8, 2019)
-\item Assignment 2 (Total grade: 20\%): Presentation mini-project 1 (individual) -- days 2 (February 6, 2019) (5\%), 3 (February 7, 2019) (5\%), 4 (February 8, 2019) (10\%)
-\item Assignment 3 (Total grade: 10\%): Written blog post about the mini-project 1 -- February 11, 2019
+\item \textbf{Assignment 1} (Total grade: 10\%): Presentation WAC paper (individual) -- day 3 (February 7, 2019) or 4 (February 8, 2019)
+\item \textbf{Assignment 2} (Total grade: 20\%): Presentation mini-project 1 (individual) -- days 2 (February 6, 2019) (5\%), 3 (February 7, 2019) (5\%), 4 (February 8, 2019) (10\%)
+\item \textbf{Assignment 3} (Total grade: 10\%): Written blog post about the mini-project 1 -- February 11, 2019
 \end{itemize}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Program: Day 1 -- 5 February, 2019}
 \begin{itemize}
 \item 9.15-10.00: Setting up computers with the tools for the tutorial
 \item 10.00-12.30: Tutorial: Playing sounds
+\item 12.30-13.00: Lunch break
 \item 12.30-16.00: Mini-project 1 development (1/4)
 \end{itemize}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Learning Outcomes}
 \begin{itemize}
@@ -111,23 +111,23 @@ Mind map exercise: What is Web Audio? Pros and Cons?
 \item Be able to find suitable information from the Web Audio API and related webpages / projects and adapt it to own needs.
 \end{itemize}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Setting Up...}
 Follow the instructions from the ``00-setting-up'' folder.
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{DOM}
 The Document Object Model, usually referred to as the DOM, is an essential part of making websites interactive. It is an interface that allows a programming language to manipulate the content, structure, and style of a website. JavaScript is the client-side scripting language that connects to the DOM in an internet browser.
 \center{\tiny{\url{https://www.digitalocean.com/community/tutorials/introduction-to-the-dom}}}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Tutorial}
 \url{https://github.com/axambo/audio-programming-workshop/tree/master/code/d1}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Connecting audio nodes}
 \begin{itemize}
@@ -136,7 +136,7 @@ The Document Object Model, usually referred to as the DOM, is an essential part 
 \item WebAudio: \url{https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API}
 \end{itemize}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{The Web Audio API}
 \begin{itemize}
@@ -145,44 +145,43 @@ The Document Object Model, usually referred to as the DOM, is an essential part 
 \end{itemize}
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API}}}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{OscillatorNode}
 The OscillatorNode interface represents a periodic waveform, such as a sine or triangle wave. It is an AudioNode audio-processing module that causes a given frequency of wave to be created.
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode}}}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{GainNode}
 The GainNode interface represents a change in volume. It is an AudioNode audio-processing module that causes a given gain to be applied to the input data before its propagation to the output.
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/GainNode}}}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{AudioBufferSourceNode}
 The AudioBufferSourceNode represents an audio source consisting of in-memory audio data, stored in an AudioBuffer. It's especially useful for playing back audio which has particularly stringent timing accuracy requirements, such as for sounds that must match a specific rhythm and can be kept in memory rather than being played from disk or the network. 
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode}}}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Mini-project development}
-You are expected to create a mini-project that should be doable within a week. The overall aim is to get familiar with web audio. Here are different approaches that you can take:
+You are expected to create a mini-project that should be doable within a week. The overall aim is to get familiar with Web Audio. Here are different approaches that you can take:
 \begin{itemize}
 \item Develop an idea based on what we are seeing in class.
 \item Adapt an existing code to your needs and document what are the changes.
 \item Other?
 \end{itemize}
 \end{frame}
-
+%
 \begin{frame}
 \frametitle{Working style}
 \begin{itemize}
 \item Individual work but in shared rooms. You are encourage to share and discuss with your peers.
 \item One-to-one talks via Zoom or personally with the instructor to catch up.
-\item There will be 4 time slots during the week to work on the project. It is okay to change the topic over the course of the week. Keep a research journal.
+\item There will be 4 time slots during the week to work on the project. It is OK to change the topic over the course of the week. Keep a research journal.
 \end{itemize}
 \end{frame}
-
 %
 \begin{frame}
 \frametitle{Relevant Links}

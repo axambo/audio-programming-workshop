@@ -1,0 +1,189 @@
+\documentclass[screen, aspectratio=43]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Use the NTNU-temaet for beamer 
+% \usetheme[style=ntnu|simple|vertical|horizontal, 
+%     language=bm|nn|en, 
+%     smalltitle, 
+%     city=all|trondheim|alesund|gjovik]{ntnu2017}
+\usetheme[style=ntnu,language=en]{ntnu2017}
+
+\usepackage[english]{babel}
+\usepackage[style=numeric,backend=biber,natbib=false,sorting=none]{biblatex}
+
+\title[AP-intro]{MCT4048: Audio Programming}
+\subtitle{The Fundamentals: Dealing with Time}
+\author[A. Xamb{\'o}]{Anna Xamb{\'o}}
+\institute[NTNU]{Department of Music, NTNU}
+\date{6 February 2019}
+%\date{} % To have an empty date
+
+\addbibresource{../ap.bib} % Add bibliography database
+
+% Set the reference style to numeric.
+% See here: http://tex.stackexchange.com/questions/68080/beamer-bibliography-icon
+\setbeamertemplate{bibliography item}[text] 
+
+% Set bibliography fonts to a small size.
+\renewcommand*{\bibfont}{\footnotesize}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Alternatively, special title page command to get a different background
+% \ntnutitlepage
+
+%
+\begin{frame}
+\frametitle{Start setting up...}
+Download: \url{https://github.com/axambo/audio-programming-workshop/} 
+\\
+\vspace{10 mm}
+Go to: \textrm{code/d2/00-setting-up/checklist.md}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Warm-up Activity}
+A round of one sentence each: Tell to the group something that you did  learn yesterday during the course.
+\end{frame}
+%
+\begin{frame}
+\frametitle{This Week: The Fundamentals (40\% Individual Work)}
+\begin{itemize}
+\item \textbf{Syllabus}: \url{https://uio.instructure.com/courses/17406}
+\item \textbf{Assignment 1} (Total grade: 10\%): Presentation WAC paper (individual) -- day 3 (February 7, 2019) or 4 (February 8, 2019)
+\item \textbf{Assignment 2} (Total grade: 20\%): Presentation mini-project 1 (individual) -- days 2 (February 6, 2019) (5\%), 3 (February 7, 2019) (5\%), 4 (February 8, 2019) (10\%)
+\item \textbf{Assignment 3} (Total grade: 10\%): Written blog post about the mini-project 1 -- February 11, 2019
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Schedule of presentations}
+\begin{itemize}
+\item Alphabetical order?
+\item February 7, 2019: Ashane, Eigil, Eirik, Guy, Jonas, Jørgen
+\item February 8, 2019: Karolina, Mari, Sam, Sepehr, Shreejay
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Program: Day 2 -- 5 February, 2019}
+\begin{itemize}
+\item 9.15-10.00: Setting up computers with the tools for the tutorial
+\item 10.00-12.30: Tutorial: Dealing with time
+\item 12.30-13.00: Lunch break
+\item 13:00-15.00: Mini-project 1 development (2/4)
+\item 15.00-16.00: Speedy presentations mini-project 1 (1/3)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Learning Outcomes}
+\begin{itemize}
+\item Get a sense of how to deal with time when using Web Audio and JavaScript.
+\item Be familiar with scheduling events in Web Audio.
+\item Be able to create an independent project relating concepts and building up from previous knowledge.
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{setTimeout(), setInterval()}
+The browser's provides two built-in methods to deal with time: \textrm{setTimeout()} and \textrm{setInterval()}. They use the same thread as the rest of the DOM.
+\end{frame}
+%
+\begin{frame}
+\frametitle{Timing Web Audio Events}
+\begin{itemize}
+\item Challenge! JavaScript is asynchronous. Events cued to be executed as soon as possible, thus time precision is difficult.
+\item Solution: Using the internal clock of Web Audio. The web audio clock operates on a separate thread than the rest of the DOM.
+\end{itemize}
+\vspace{10 mm}
+\centerline{\textrm{audioContext.currentTime}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{BaseAudioContext.currentTime}
+The \textrm{currentTime} read-only property of the BaseAudioContext interface returns a double representing an ever-increasing hardware timestamp in seconds that can be used for scheduling audio playback, visualizing timelines, etc. It starts at 0.
+\center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/currentTime}}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Changing Audio Parameters Over Time}
+\begin{itemize}
+\item  The Web Audio API includes a collection of methods for scheduling changes in audio parameter values at present or in the future:
+\end{itemize}
+\vspace{10 mm}
+\centerline{\textrm{setValueAtTime(arg1,arg2)}}
+\centerline{\textrm{exponentialRampToValueAtTime(arg1,arg2)}}
+\centerline{\textrm{linearRampToValueAtTime(arg1,arg2)}}
+\centerline{\textrm{setTargetAtTime(arg1,arg2,arg3)}}
+\centerline{\textrm{setValueCurveAtTime(arg1,arg2,arg3)}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{setValueAtTime}
+The \textrm{setValueAtTime} method allows to create an abrupt change of an audio parameter at a future period in time.  The first argument is the value the parameter will be changed to, and the second argument is the time that it will take to change to that value.
+\center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setValueAtTime}}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{exponentialRampToValueAtTime }
+The \textrm{exponentialRampToValueAtTime} method allows to create an abrupt change of an audio parameter at a future period in time.  The first argument is the value the parameter will be changed to, and the second argument is the time that it will take to change to that value.
+\center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/exponentialRampToValueAtTime}}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{linearRampToValueAtTime}
+The \textrm{linearRampToValueAtTime} method also allows to create a gradual change of the parameter value, but follows a gradual linear curve.
+\center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/linearRampToValueAtTime}}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{setTargetAtTime()}
+The \textrm{setTargetAtTime} method schedules the start of a gradual change that is useful for decay or release portions of ADSR envelopes.
+\center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setTargetAtTime}}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{setValueCurveAtTime()}
+The \textrm{setValueAtTime} method schedules the parameter's value to change following a curve defined by a list of values. The curve is a linear interpolation between the sequence of values defined in an array of floating-point values.
+\center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setValueCurveAtTime}}}
+\end{frame}
+%	
+\begin{frame}
+\frametitle{Mini-project development}
+You are expected to create a mini-project that should be doable within a week. The overall aim is to get familiar with Web Audio. Here are different approaches that you can take:
+\begin{itemize}
+\item Develop an idea based on what we are seeing in class. Feel free to build up everyday, or change if not convinced.
+\item Adapt an existing code to your needs and document what are the changes.
+\item Other?
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Working style}
+\begin{itemize}
+\item Individual work but in shared rooms. You are encourage to share and discuss with your peers.
+\item One-to-one talks via Zoom or personally with the instructor to catch up.
+\item There will be 4 time slots during the week to work on the project. It is OK to change the topic over the course of the week. Keep a research journal.
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Relevant Links}
+\begin{itemize}
+\item Syllabus: \url{https://uio.instructure.com/courses/17406/pages/syllabus}
+\item GitHub slides \& code: \url{https://github.com/axambo/audio-programming-workshop}
+\end{itemize}
+\end{frame}
+%
+%\begin{frame}
+%  \frametitle{References}
+%  \printbibliography
+%\end{frame}
+%
+\end{document}
