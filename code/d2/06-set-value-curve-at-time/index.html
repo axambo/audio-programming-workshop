@@ -12,24 +12,25 @@
 <button type="button" id="button2">Stop</button>
 
 <script>
-    var AudioContext = window.AudioContext || window.webkitAudioContext;
-    var oscillator, volume, currgain, context; 
+  var AudioContext = window.AudioContext || window.webkitAudioContext;
+  var context;
+  var oscillator, volume, currgain; 
 
-    var waveArray = new Float32Array(10);
-    waveArray[0] = 100;
-    waveArray[1] = 500;
-    waveArray[2] = 100;
-    waveArray[3] = 500;
-    waveArray[4] = 100;
-    waveArray[5] = 500;
-    waveArray[6] = 100;
-    waveArray[7] = 500;
-    waveArray[8] = 100;
-    waveArray[9] = 500;
+  var waveArray = new Float32Array(10);
+  waveArray[0] = 100;
+  waveArray[1] = 500;
+  waveArray[2] = 100;
+  waveArray[3] = 500;
+  waveArray[4] = 100;
+  waveArray[5] = 500;
+  waveArray[6] = 100;
+  waveArray[7] = 500;
+  waveArray[8] = 100;
+  waveArray[9] = 500;
 
-    console.log(waveArray);
+  console.log(waveArray);
 
-    document.querySelector("#button1").addEventListener('click', function() {
+  document.querySelector("#button1").addEventListener('click', function() {
     context = new AudioContext();
     oscillator = context.createOscillator();
     oscillator.frequency.value = 440;

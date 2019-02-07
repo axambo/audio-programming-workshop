@@ -11,20 +11,22 @@
 <button type="button" id="button2">Stop</button>
 
 <script>
-    var AudioContext = window.AudioContext || window.webkitAudioContext;    
-    var context, player; 
-    var splitter, merger;    
-    var leftDelay, rightDelay, delayAmount;
-    var leftFeedback, rightFeedback;
-    document.querySelector("#button1").addEventListener('click', function() {
+  var AudioContext = window.AudioContext || window.webkitAudioContext;    
+  var context
+  var player; 
+  var splitter, merger;    
+  var leftDelay, rightDelay, delayAmount;
+  var leftFeedback, rightFeedback;
+
+  document.querySelector("#button1").addEventListener('click', function() {
     context = new AudioContext();
-    
+
     merger = context.createChannelMerger(2);
     splitter = context.createChannelSplitter(2);
 
     // create a sound input node from an audio sample
     player = context.createBufferSource();
-    player.loop = true;
+    player.loop = false;
 
     // create a delay effect node
     leftDelay = context.createDelay();
@@ -47,14 +49,14 @@
     leftDelay.connect(leftFeedback);
     leftFeedback.gain.value = 0.6;
     leftFeedback.connect(rightDelay); 
-    
+
     splitter.connect(rightDelay, 1);
     rightDelay.delayTime.value = 0.5;
-    
+
     rightDelay.connect(rightFeedback);
     rightFeedback.gain.value = 0.6;    
     rightFeedback.connect(leftDelay);    
-    
+
     leftFeedback.connect(merger, 0, 0);
     rightFeedback.connect(merger, 0, 1);
 

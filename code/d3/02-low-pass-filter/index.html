@@ -11,24 +11,26 @@
 <button type="button" id="button2">Stop</button>
 
 <script>
-    var context = new (window.AudioContext || window.webkitAudioContext)();
-    var osc;
-    var filter;
+  var AudioContext = window.AudioContext || window.webkitAudioContext;
+  var context;
+  var osc;
+  var filter;
 
-    document.querySelector("button").addEventListener('click', function() {
-      
-      // create the oscillator
-      osc = context.createOscillator();
-      osc.start(context.currentTime);
+  document.querySelector("button").addEventListener('click', function() {
+    
+    context = new AudioContext();
+    // create the oscillator
+    osc = context.createOscillator();
+    osc.start(context.currentTime);
 
-      // create the filter
-      filter = context.createBiquadFilter();
-      filter.type = "lowpass";
-      filter.frequency.value = 250;
-      osc.connect(filter);
+    // create the filter
+    filter = context.createBiquadFilter();
+    filter.type = "lowpass";
+    filter.frequency.value = 250;
+    osc.connect(filter);
 
-      // Connect to the output
-      filter.connect(context.destination);
+    // Connect to the output
+    filter.connect(context.destination);
 
   });
 

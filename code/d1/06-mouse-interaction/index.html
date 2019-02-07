@@ -29,11 +29,12 @@ window.onload = function() {
 <button type="button" id="button2">Stop</button>
 
 <script>
-    var oscillator; 
-    var playing = 0;
-    document.querySelector("#button1").addEventListener('click', function() {
-    var AudioContext = window.AudioContext || window.webkitAudioContext;    
-    var context = new AudioContext();
+  var AudioContext = window.AudioContext || window.webkitAudioContext;    
+  var context;
+  var oscillator; 
+  var playing = 0;
+  document.querySelector("#button1").addEventListener('click', function() {
+    context = new AudioContext();
     oscillator = context.createOscillator();
     oscillator.frequency.value = 0;
     oscillator.start();
@@ -46,12 +47,11 @@ window.onload = function() {
 
     playing = 1;  
 
-  });
-  document.querySelector("#button2").addEventListener('click', function() {
-    oscillator.stop();
-    playing = 0;
-  });
-
+});
+document.querySelector("#button2").addEventListener('click', function() {
+  oscillator.stop();
+  playing = 0;
+});
 </script>
 
 </body>

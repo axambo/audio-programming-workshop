@@ -11,9 +11,10 @@
 <button type="button" id="button2">Stop</button>
 
 <script>
-    var AudioContext = window.AudioContext || window.webkitAudioContext;    
-    var context, player, delay, delayAmount;
-    document.querySelector("#button1").addEventListener('click', function() {
+  var AudioContext = window.AudioContext || window.webkitAudioContext;
+  var context;    
+  var player, delay, delayAmount;
+  document.querySelector("#button1").addEventListener('click', function() {
     context = new AudioContext();
     
     // create a sound input node from an audio sample
@@ -26,7 +27,7 @@
 
     // create a gain effect node
     delayAmount = context.createGain();
-    delayAmount.gain.value = 0.5; // amount of the effect
+    delayAmount.gain.value = 0.9; // amount of the effect
 
     // play the sound
     loadSound("sound.mp3");
@@ -35,6 +36,7 @@
     player.connect(delay);
     player.connect(context.destination);    
     delay.connect(delayAmount);
+    delayAmount.connect(delay);
     delayAmount.connect(context.destination);
 
   });

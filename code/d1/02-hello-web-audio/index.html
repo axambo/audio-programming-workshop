@@ -19,9 +19,10 @@
 <!-- This is the new way of starting an app of Web Audio -->
 <!-- Recommended to use this template for new projects -->
 <script>
-    document.querySelector("button").addEventListener('click', function() {
-    var AudioContext = window.AudioContext || window.webkitAudioContext;
-    var context = new AudioContext();
+  var AudioContext = window.AudioContext || window.webkitAudioContext;
+  var context;
+  document.querySelector("button").addEventListener('click', function() {
+    context = new AudioContext();
     console.log("Pressed button");
     // here to add audio nodes...
   });

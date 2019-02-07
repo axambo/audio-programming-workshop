@@ -12,9 +12,9 @@
 <button type="button" id="button2">Stop</button>
 
 <script>
+    var AudioContext = window.AudioContext || window.webkitAudioContext;    
     var player, context; 
     document.querySelector("#button1").addEventListener('click', function() {
-    var AudioContext = window.AudioContext || window.webkitAudioContext;    
     context = new AudioContext();
     player = context.createBufferSource();
     player.loop = true;

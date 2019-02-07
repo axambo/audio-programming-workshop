@@ -11,45 +11,48 @@
 <button type="button" id="button2">Stop</button>
 
 <script>
-    var context = new (window.AudioContext || window.webkitAudioContext)();
-    var oscSaw;
-    var gainSaw;
-    var oscTri;
-    var gainTri;
-    var gainOscSum;
+  var AudioContext = window.AudioContext || window.webkitAudioContext;
+  var context;
+  var oscSaw;
+  var gainSaw;
+  var oscTri;
+  var gainTri;
+  var gainOscSum;
 
-    document.querySelector("button").addEventListener('click', function() {
-      
-      // oscillator 1 => sawtooth oscillator
-      oscSaw = context.createOscillator();
-      oscSaw.type = "sawtooth";
-      oscSaw.frequency.value = 118;
-      oscSaw.start(context.currentTime);
+  document.querySelector("button").addEventListener('click', function() {
+    
+    context = new AudioContext();
 
-      // gain 1 => volume for oscillator 1
-      gainSaw = context.createGain();
-      gainSaw.gain.value = 0.6;
-      oscSaw.connect(gainSaw);  
+    // oscillator 1 => sawtooth oscillator
+    oscSaw = context.createOscillator();
+    oscSaw.type = "sawtooth";
+    oscSaw.frequency.value = 118;
+    oscSaw.start(context.currentTime);
 
-      // oscillator 2 => triangle wave oscillator
-      oscTri = context.createOscillator();
-      oscTri.type = "triangle";
-      oscTri.frequency.value = 120;
-      oscTri.start(context.currentTime);
+    // gain 1 => volume for oscillator 1
+    gainSaw = context.createGain();
+    gainSaw.gain.value = 0.5;
+    oscSaw.connect(gainSaw);  
 
-      // gain 1 => volume for oscillator 1
-      gainTri = context.createGain();
-      gainTri.gain.value = 3; // set volume
-      oscTri.connect(gainTri);
+    // oscillator 2 => triangle wave oscillator
+    oscTri = context.createOscillator();
+    oscTri.type = "triangle";
+    oscTri.frequency.value = 120;
+    oscTri.start(context.currentTime);
 
-      // Sum oscillators 1 and 2
-      gainOscSum = context.createGain();
-      gainOscSum.gain.value = 1;
-      gainTri.connect(gainOscSum);
-      gainSaw.connect(gainOscSum);
+    // gain 2 => volume for oscillator 2
+    gainTri = context.createGain();
+    gainTri.gain.value = 0.5; // set volume
+    oscTri.connect(gainTri);
 
-      // Connect to the output
-      gainOscSum.connect(context.destination);
+    // Sum oscillators 1 and 2
+    gainOscSum = context.createGain();
+    gainOscSum.gain.value = 1;
+    gainTri.connect(gainOscSum);
+    gainSaw.connect(gainOscSum);
+
+    // Connect to the output
+    gainOscSum.connect(context.destination);
 
   });
 

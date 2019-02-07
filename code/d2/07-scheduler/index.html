@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>MCT Audio Programming with Web Audio</title>
+  <script type="text/javascript" src="https://ajax.googleapis.
+com/ajax/libs/jquery/2.1.0/jquery.js"></script>
 </head>
 <body>
 
@@ -10,12 +12,13 @@
 <button type="button" id="button2">Stop</button>
 
 <script>
-    var AudioContext = window.AudioContext || window.webkitAudioContext;
-    var oscillator, volume, currgain, context; 
-    var nextNotetime;
-    var timerID;
+  var AudioContext = window.AudioContext || window.webkitAudioContext;
+  var context;
+  var oscillator, volume, currgain; 
+  var nextNotetime;
+  var timerID;
 
-    document.querySelector("#button1").addEventListener('click', function() {
+  document.querySelector("#button1").addEventListener('click', function() {
     context = new AudioContext();
     nextNotetime = context.currentTime;
     // oscillator = context.createOscillator();
@@ -26,7 +29,7 @@
     // volume.gain.value = 0.5;
     // currgain = volume.gain.value;
 
-     
+      
     scheduler();
 
   });
@@ -36,7 +39,7 @@
   });
 
 function scheduler() {
-
+//debugger;
 while(nextNotetime < context.currentTime + 0.1) {
     
     nextNotetime += 0.5;
