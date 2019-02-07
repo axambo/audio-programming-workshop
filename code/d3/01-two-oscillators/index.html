@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+
+</head>
+<body>
+
+<button type="button" id="button1">Play</button>
+<button type="button" id="button2">Stop</button>
+
+<script>
+    var context = new (window.AudioContext || window.webkitAudioContext)();
+    var oscSaw;
+    var gainSaw;
+    var oscTri;
+    var gainTri;
+    var gainOscSum;
+
+    document.querySelector("button").addEventListener('click', function() {
+      
+      // oscillator 1 => sawtooth oscillator
+      oscSaw = context.createOscillator();
+      oscSaw.type = "sawtooth";
+      oscSaw.frequency.value = 118;
+      oscSaw.start(context.currentTime);
+
+      // gain 1 => volume for oscillator 1
+      gainSaw = context.createGain();
+      gainSaw.gain.value = 0.6;
+      oscSaw.connect(gainSaw);  
+
+      // oscillator 2 => triangle wave oscillator
+      oscTri = context.createOscillator();
+      oscTri.type = "triangle";
+      oscTri.frequency.value = 120;
+      oscTri.start(context.currentTime);
+
+      // gain 1 => volume for oscillator 1
+      gainTri = context.createGain();
+      gainTri.gain.value = 3; // set volume
+      oscTri.connect(gainTri);
+
+      // Sum oscillators 1 and 2
+      gainOscSum = context.createGain();
+      gainOscSum.gain.value = 1;
+      gainTri.connect(gainOscSum);
+      gainSaw.connect(gainOscSum);
+
+      // Connect to the output
+      gainOscSum.connect(context.destination);
+
+  });
+
+  document.querySelector("#button2").addEventListener('click', function() {
+    gainOscSum.gain.value = 0;
+  });
+  
+</script>
+
+
+</body>
+</html>

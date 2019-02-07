@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+
+</head>
+<body>
+
+<button type="button" id="button1">Play</button>
+<button type="button" id="button2">Stop</button>
+
+<script>
+    var context = new (window.AudioContext || window.webkitAudioContext)();
+    var osc;
+    var filter;
+
+    document.querySelector("button").addEventListener('click', function() {
+      
+      // create the oscillator
+      osc = context.createOscillator();
+      osc.start(context.currentTime);
+
+      // create the filter
+      filter = context.createBiquadFilter();
+      filter.type = "lowpass";
+      filter.frequency.value = 250;
+      osc.connect(filter);
+
+      // Connect to the output
+      filter.connect(context.destination);
+
+  });
+
+  document.querySelector("#button2").addEventListener('click', function() {
+    osc.stop();
+  });
+  
+</script>
+
+
+</body>
+</html>
