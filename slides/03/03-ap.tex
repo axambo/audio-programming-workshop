@@ -91,15 +91,15 @@ Schedule of presentations 7.2.19:
 %
 \begin{frame}
 \frametitle{Start setting up...}
-Download: \url{https://github.com/axambo/audio-programming-workshop/} 
+Download d3 (code \& slides): \url{https://github.com/axambo/audio-programming-workshop/} 
 \\
 \vspace{10 mm}
-Go to: \textrm{code/d3/}
+Go to: \texttt{code/d3/}
 \end{frame}
 %	
 \begin{frame}
 \frametitle{Debugging JavaScript}
- \textrm{debugger;} 
+ \texttt{debugger;} 
 \end{frame}
 %
 \begin{frame}
@@ -108,7 +108,7 @@ Go to: \textrm{code/d3/}
 \item The Web Audio API node graph has been designed inspired by the sound mixer metaphor. 
 \item The node graph can also be related to the modular synthesizer metaphor (LittleBits, Reactable, MaxMSP or Pd).
 \item It is possible to create signal chains with the different objects.
-\item These objects are called nodes and are connected using the method \textrm{connect()}.
+\item These objects are called nodes and are connected using the method \texttt{connect()}.
 \item It is possible to place any node anywhere you want in the node graph signal chain.
 \end{itemize}
 \end{frame}
@@ -117,14 +117,13 @@ Go to: \textrm{code/d3/}
 \frametitle{Gain Node}
    \begin{figure}
 	\includegraphics[scale=0.35]{img/Routing-audio-nodes-01-two-oscillators.png}
-\end{figure}
+   \end{figure}
 \begin{itemize}
 \item The gain node can be used to split and combine input sources.
 \item Gain nodes facilitate independent volume control of the audio sources.
 \item Gain nodes are used as virtual mixing channels.
 \end{itemize}
 \end{frame}
-%
 %
 \begin{frame}
 \frametitle{Modification Nodes || Effects Nodes}
@@ -140,7 +139,7 @@ Go to: \textrm{code/d3/}
 	\includegraphics[scale=0.35]{img/Routing-audio-nodes-02-low-pass-filter.png}
 \end{figure}
 \begin{enumerate}
-\item Invoke the method to create the node e.g. \textrm{AudioContext.createGain()}.
+\item Invoke the method to create the node e.g. \texttt{AudioContext.createGain()}.
 \item Connect the object in the signal chain.
 \item Modify the properties and methods of the effects node.
 \end{enumerate}
@@ -149,89 +148,89 @@ Go to: \textrm{code/d3/}
 \begin{frame}
 \frametitle{Some of the Effects Available}
 \begin{itemize}
-\item \textrm{GainNode}: Volume change.
-\item \textrm{StereoPannerNode}: 2D panning.
-\item \textrm{BiquadFilterNode}: EQ filter.
-\item \textrm{DelayNode}: Audible delay.
-\item \textrm{ConvolverNode}: Convolution reverberation.
-\item \textrm{DynamicsCompressorNode}: Dynamic range compression.
+\item \texttt{GainNode}: Volume change.
+\item \texttt{StereoPannerNode}: 2D panning.
+\item \texttt{BiquadFilterNode}: EQ filter.
+\item \texttt{DelayNode}: Audible delay.
+\item \texttt{ConvolverNode}: Convolution reverberation.
+\item \texttt{DynamicsCompressorNode}: Dynamic range compression.
 \end{itemize}
 %\vspace{10 mm}
-%\centerline{\textrm{setValueAtTime(arg1,arg2)}}
-%\centerline{\textrm{exponentialRampToValueAtTime(arg1,arg2)}}
-%\centerline{\textrm{linearRampToValueAtTime(arg1,arg2)}}
-%\centerline{\textrm{setTargetAtTime(arg1,arg2,arg3)}}
-%\centerline{\textrm{setValueCurveAtTime(arg1,arg2,arg3)}}
+%\centerline{\texttt{setValueAtTime(arg1,arg2)}}
+%\centerline{\texttt{exponentialRampToValueAtTime(arg1,arg2)}}
+%\centerline{\texttt{linearRampToValueAtTime(arg1,arg2)}}
+%\centerline{\texttt{setTargetAtTime(arg1,arg2,arg3)}}
+%\centerline{\texttt{setValueCurveAtTime(arg1,arg2,arg3)}}
 \end{frame}
 %
 \begin{frame}
 \frametitle{GainNode}
-The \textrm{GainNode} changes the volume. Gain nodes are also used as virtual mixing channels that can be connected in parallel or in series.\\
+The \texttt{GainNode} changes the volume. Gain nodes are also used as virtual mixing channels that can be connected in parallel or in series.\\
 \vspace{10 mm}
-\centerline{\textrm{AudioContext.createGain();}}
+\centerline{\texttt{AudioContext.createGain();}}
 \vspace{2 mm}
-\centerline{\textrm{GainNode.gain // range: 0--1}}
+\centerline{\texttt{GainNode.gain // range: 0--1}}
 \vspace{10 mm}
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/GainNode}}}
 \end{frame}
 %
 \begin{frame}
 \frametitle{StereoPannerNode}
-The \textrm{StereoPannerNode} can be used to pan an audio stream left or right.\\
+The \texttt{StereoPannerNode} can be used to pan an audio stream left or right.\\
 \vspace{10 mm}
-\centerline{\textrm{AudioContext.createStereoPanner();}}
+\centerline{\texttt{AudioContext.createStereoPanner();}}
 \vspace{2 mm}
-\centerline{\textrm{StereoPannerNode.pan // range: -1 (L) / 1 (R)}}
+\centerline{\texttt{StereoPannerNode.pan // range: -1 (L) / 1 (R)}}
 \vspace{10 mm}
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode}}}
 \end{frame}
 %
 \begin{frame}
 \frametitle{BiquadFilterNode}
-The \textrm{BiquadFilterNode} represents different kinds of filters, tone control devices, and graphic equalizers.\\
+The \texttt{BiquadFilterNode} represents different kinds of filters, tone control devices, and graphic equalizers.\\
 \vspace{10 mm}
-\centerline{\textrm{AudioContext.createBiquadFilter();}}
+\centerline{\texttt{AudioContext.createBiquadFilter();}}
 \vspace{2 mm}
-\centerline{\textrm{BiquadFilterNode.type // options: "lowpass", "highpass", "bandpass"...}}
+\centerline{\texttt{BiquadFilterNode.type // options: "lowpass", "highpass", "bandpass"...}}
 \vspace{10 mm}
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode}}}
 \end{frame}
 %
 \begin{frame}
 \frametitle{DelayNode}
-The \textrm{DelayNode} causes a delay between the arrival of an input data and its propagation to the output.\\
+The \texttt{DelayNode} causes a delay between the arrival of an input data and its propagation to the output.\\
 \vspace{10 mm}
-\centerline{\textrm{AudioContext.createDelay();}}
+\centerline{\texttt{AudioContext.createDelay();}}
 \vspace{2 mm}
-\centerline{\textrm{DelayNode.delayTime // range: 0-180 seconds}}
+\centerline{\texttt{DelayNode.delayTime // range: 0-180 seconds}}
 \vspace{10 mm}
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/DelayNode}}}
 \end{frame}
 %
 \begin{frame}
 \frametitle{ConvolverNode}
-The \textrm{ConvolverNode} is often used to achieve a reverb effect.\\
+The \texttt{ConvolverNode} is often used to achieve a reverb effect.\\
 \vspace{10 mm}
-\centerline{\textrm{AudioContext.createConvolver();}}
+\centerline{\texttt{AudioContext.createConvolver();}}
 \vspace{2 mm}
-\centerline{\textrm{ConvolverNode.buffer}}
+\centerline{\texttt{ConvolverNode.buffer}}
 \vspace{10 mm}
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode}}}
 \end{frame}
 %
 \begin{frame}
 \frametitle{DynamicsCompressorNode}
-The \textrm{DynamicsCompressorNode} provides a compression effect. It lowers the volume of the loudest parts of the signal in order to help prevent clipping and distortion.\\
+The \texttt{DynamicsCompressorNode} provides a compression effect. It lowers the volume of the loudest parts of the signal in order to help prevent clipping and distortion.\\
 \vspace{10 mm}
-\centerline{\textrm{AudioContext.createDynamicsCompressor();}}
+\centerline{\texttt{AudioContext.createDynamicsCompressor();}}
 %\vspace{2 mm}
-%\centerline{\textrm{DynamicsCompressorNode??}}
+%\centerline{\texttt{DynamicsCompressorNode??}}
 \vspace{10 mm}
 \center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode}}}
 \end{frame}
 %
 \begin{frame}
-\frametitle{Mini-project development}
+\frametitle{Mini-project development (3/4)}
 You are expected to create a mini-project that should be doable within a week. The overall aim is to get familiar with Web Audio. Here are different approaches that you can take:
 \begin{itemize}
 \item Develop an idea based on what we are seeing in class. Feel free to build up everyday, or change if not convinced.
