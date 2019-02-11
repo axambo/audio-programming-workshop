@@ -47,7 +47,18 @@ a:hover { color: #ffcc66 } */
 
 /* Template 3 */
 
-body {background-color:#333333}
+body {background-color:rgb(34, 151, 81)}
+
+#button {
+    background-color: #4CAF50; /* Green */
+    border: #FF5566 solid 10px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
 
 h1 { color: #ffffff; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; }
 

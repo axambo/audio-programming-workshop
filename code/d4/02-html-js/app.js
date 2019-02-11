@@ -1,7 +1,7 @@
 // Method 1: copy-paste from HTML and call of the script in the same place
 
 var AudioContext = window.AudioContext || window.webkitAudioContext;    
-var context
+var context;
 var player; 
 var splitter, merger;    
 var leftDelay, rightDelay, delayAmount;

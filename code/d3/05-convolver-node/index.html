@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MCT Audio Programming with Web Audio</title>
+
+</head>
+<body>
+
+<button type="button" id="button1">Play</button>
+<button type="button" id="button2">Stop</button>
+
+<script>
+    var AudioContext = window.AudioContext || window.webkitAudioContext;    
+    var context, osc;
+    var impulseResponseBuffer;
+    var convolver; 
+    document.querySelector("#button1").addEventListener('click', function() {
+    context = new AudioContext();
+    
+    osc = context.createOscillator();
+    osc.type = "sawtooth";
+    convolver = context.createConvolver();
+    convolver.buffer = impulseResponseBuffer;
+
+    osc.connect(convolver);
+    convolver.connect(context.destination);
+    osc.start(context.currentTime);
+
+  });
+
+  document.querySelector("#button2").addEventListener('click', function() {
+    player.stop();
+  });
+ 
+
+// Method 1 
+
+  function loadSound(soundfile) {
+  var request = new XMLHttpRequest();
+  request.open('GET', soundfile, true);
+  request.responseType = 'arraybuffer';
+
+  // Decode asynchronously
+  request.onload = function() {
+    context.decodeAudioData(request.response, function(buffer) {
+      impulseResponseBuffer = buffer;
+      player.start();
+    }, onError);
+  }
+  request.send();
+  
+}
+
+function onError(){
+  console.log("The file could not be loaded");
+}
+  
+</script>
+
+
+</body>
+</html>

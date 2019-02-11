@@ -3,7 +3,7 @@
 window.onload = function() {
 
   var AudioContext = window.AudioContext || window.webkitAudioContext;    
-  var context
+  var context;
   var player; 
   var splitter, merger;    
   var leftDelay, rightDelay, delayAmount;

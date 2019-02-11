@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>MCT Audio Programming with Web Audio</title>
   <script src="NexusUI.js"></script>
-  <!-- <script src="jquery-3.3.1.min.js"></script> -->
   <link rel="stylesheet" href="app.css">
 </head>
 
@@ -21,8 +20,8 @@
         'size': [25,100]
       });
 
-      slider.on('change',function(v) {
-        console.log(v);
+      slider.on('change',function(note) {
+        console.log(note);
       })
 
       var slider2 = new Nexus.Slider('#slider2',{
