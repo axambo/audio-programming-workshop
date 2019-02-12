@@ -84,6 +84,7 @@ function onMIDIMessage(message) {
   console.log("note: " + note);
   console.log("velocity: " + velocity);
 
+
   switch (type) {
       case 144: // noteOn message 
            noteOn(note, velocity);

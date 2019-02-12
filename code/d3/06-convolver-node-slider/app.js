@@ -22,9 +22,9 @@ window.onload = function() {
         convolver.buffer = impulseResponseBuffer[0];     
         osc.connect(convolver);
         convolver.connect(gain);
-        gain.gain.value = 0.2; // change this value
+        //gain.gain.value = 0.2; // change this value
         gain.connect(context.destination);
-        osc.connect(context.destination);    
+        //osc.connect(context.destination);    
 
     });
 

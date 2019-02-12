@@ -28,7 +28,7 @@ window.onload = function() {
         convolver.connect(gain);
         //gain.gain.value = 0.1; // change this value
         gain.connect(context.destination);
-        osc.connect(context.destination);  
+        //osc.connect(context.destination);  
 
     });
 
@@ -61,7 +61,7 @@ window.onload = function() {
 
     slider.oninput = function() {
         console.log(this.value);
-        normSliderValue = this.value/100;
+        normSliderValue = this.value/2;
         console.log(normSliderValue);
         gain.gain.value = normSliderValue;
       }  
