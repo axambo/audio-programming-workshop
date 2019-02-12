@@ -1,0 +1,184 @@
+\documentclass[screen, aspectratio=43]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Use the NTNU-temaet for beamer 
+% \usetheme[style=ntnu|simple|vertical|horizontal, 
+%     language=bm|nn|en, 
+%     smalltitle, 
+%     city=all|trondheim|alesund|gjovik]{ntnu2017}
+\usetheme[style=ntnu,language=en]{ntnu2017}
+
+\usepackage[english]{babel}
+\usepackage[style=numeric,backend=biber,natbib=false,sorting=none]{biblatex}
+
+\title[AP-intro]{MCT4048: Audio Programming}
+\subtitle{The Extensions: Dealing with Interactivity et al.}
+\author[A. Xamb{\'o}]{Anna Xamb{\'o}}
+\institute[NTNU]{Department of Music, NTNU}
+\date{12 February 2019}
+%\date{} % To have an empty date
+
+\addbibresource{../ap.bib} % Add bibliography database
+
+% Set the reference style to numeric.
+% See here: http://tex.stackexchange.com/questions/68080/beamer-bibliography-icon
+\setbeamertemplate{bibliography item}[text] 
+
+% Set bibliography fonts to a small size.
+\renewcommand*{\bibfont}{\footnotesize}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+%
+%
+\begin{frame}
+\frametitle{Start setting up...}
+Download: \url{https://github.com/axambo/audio-programming-workshop/} 
+\\
+\vspace{10 mm}
+Go to: \textrm{code/d5/00-setting-up/checklist.md}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Warm-up Activity}
+Quizz: Week 1 Recap
+\end{frame}
+%
+\begin{frame}
+\frametitle{Feedback Assignments}
+\begin{itemize}
+\item WAC paper presentations
+\item Projects on GitHub
+\item Blog posts
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{This Week: The Extensions (40\% Group Work)}
+\begin{itemize}
+\item \textbf{Syllabus}: \url{https://uio.instructure.com/courses/17406}
+\item \textbf{Assignment 4} (Total grade: 30\%): Presentation mini-project 2 (group) -- days 6 (February 13, 2019) (10\%), 7 (February 14, 2019) (10\%), 8 (February 15, 2019) (10\%)
+\item \textbf{Assignment 5} (Total grade: 10\%):  Written blog post about the mini-project 2 -- February 22, 2019
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Program: Day 5 -- 12 February, 2019}
+\begin{itemize}
+\item 9.15-10.00: Setting up computers with the tools for the tutorial + Recap last week
+\item 10.00-12.30: Tutorial: Dealing with interactivity et al.
+\item 12.30-13.00: Lunch break
+\item 13:00-13:30: Organization of groups
+\item 13:30-16:00: Mini-project 2 development (1/4)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Learning Outcomes}
+\begin{itemize}
+\item Get a sense of more advanced techniques of audio synthesis related to user interaction.
+\item Get familiar with the MIDI protocol and the use of MIDI in the browser.
+\item Be able to work in a group project relating audio programming concepts and building up from previous knowledge.
+\item Be aware of best practices in web development in group projects.
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Arrays in JavaScript}
+Creation of an array:
+\texttt{fruits = [`Apple', `Banana'];}\\
+\texttt{fruits = [];}\\
+\texttt{fruits[0] = `Apple';}\\
+\vspace{10 mm}
+Access into the first element of the array:\\
+\texttt{fruits[0]}\\
+\vspace{10 mm}
+(Optionally) Loop over the array using \texttt{for} or \texttt{while}.\\
+\end{frame}
+%
+\begin{frame}
+\frametitle{The Convolver Node}
+\begin{itemize}
+\item It is possible to record the ambience of a place and apply it to any digital audio signal.
+\item Impulse response is a *special file* that stores this information.
+\item With the convolver, you can apply the reverberation characteristics of a room to audio input sources by referencing an impulse response.
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{ConvolverNode}
+The \texttt{ConvolverNode}  performs a linear convolution on a given audio buffer, often used to achieve a reverb effect.\\
+\vspace{10 mm}
+\centerline{\texttt{AudioContext.createConvolver();}}
+\vspace{2 mm}
+\centerline{\texttt{ConvolverNode.buffer}}
+\vspace{10 mm}
+\center{\tiny{\url{https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode}}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Amplitude Modulation vs. Frequency Modulation}
+\end{frame}
+%
+\begin{frame}
+\frametitle{MIDI}
+\begin{itemize}
+\item Musical Instrument Digital Interface (MIDI) stands for a technical standard that describes a communications protocol, digital interface, and electrical connectors that connect a wide variety of electronic musical instruments, computers, and related audio devices.
+\item MIDI carries event messages that specify different musical aspects, including notation, pitch, and velocity.
+\item The activation of a particular note (Note On message) and the release (Note Off message) of the same note are considered as two separate events.
+\item The velocity event determines how loud it plays relative to other notes
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{The Web MIDI API}
+\begin{itemize}
+\item It works on all platforms and devices. It also works with your existing MIDI setup.
+\item It is accessible anywhere.
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Organization of groups: Brainstorming}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Mini-project development (1/4)}
+You are expected to create a mini-project in teams that should be doable within a week. The overall aim is to explore a little bit further Web Audio. Here are different approaches that you can take:
+\begin{itemize}
+\item Develop an idea based on what we are seeing in class. Feel free to build up everyday, or change if not convinced (from scratch approach).
+\item Adapt an existing code to your needs and document what are the changes (remake approach).
+\item Combine projects from last week (hybrid approach).
+\item Other?
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Working style}
+\begin{itemize}
+\item Work with the same team throughout the week, ideally across campuses. 
+\item Make sure to clarify who has developed what part of the code. For example, divide the work into functions and add the author name at the header of each function.
+\item The instructors in both sites will keep an eye on the groups to catch up.
+\item There will be 4 time slots during the week to work on the project. 
+\item Keep a research journal.
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Relevant Links}
+\begin{itemize}
+\item Syllabus: \url{https://uio.instructure.com/courses/17406/pages/syllabus}
+\item GitHub slides \& code: \url{https://github.com/axambo/audio-programming-workshop}
+\end{itemize}
+\end{frame}
+%
+%\begin{frame}
+%  \frametitle{References}
+%  \printbibliography
+%\end{frame}
+%
+\end{document}

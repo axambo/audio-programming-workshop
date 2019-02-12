@@ -2,7 +2,7 @@
 window.onload = function() {
     
     var AudioContext = window.AudioContext || window.webkitAudioContext;    
-    var context, osc;
+    var context, osc, gain;
     var impulseResponseBuffer=[];
     var convolver; 
 
@@ -10,9 +10,9 @@ window.onload = function() {
         context = new AudioContext();
         //debugger;
         loadSound("sound.wav", 0);
-        loadSound("sound2.wav", 1);
         convolver = context.createConvolver();
-        osc = context.createOscillator();  
+        osc = context.createOscillator(); 
+        gain = context.createGain(); 
         osc.type = "sawtooth";
         osc.start();  
         });
@@ -21,17 +21,13 @@ window.onload = function() {
 
         convolver.buffer = impulseResponseBuffer[0];     
         osc.connect(convolver);
-        convolver.connect(context.destination);    
+        convolver.connect(gain);
+        gain.gain.value = 0.2; // change this value
+        gain.connect(context.destination);
+        osc.connect(context.destination);    
 
     });
 
-    document.querySelector("#button2").addEventListener('click', function() {
-        
-        convolver.buffer = impulseResponseBuffer[1];     
-        osc.connect(convolver);
-        convolver.connect(context.destination);    
-
-    });   
 
     document.querySelector("#button3").addEventListener('click', function() {
         if (osc) osc.stop();
