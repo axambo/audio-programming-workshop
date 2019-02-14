@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 
+    The viewport is the user's visible area of a web page. 
+    The viewport varies with the device, and will be smaller on a mobile phone than on a computer screen. 
+  -->
+  <title>MCT Audio Programming with Web Audio</title>
+  <!-- <script src="app.js"></script> -->
+
+  <style>
+      * {
+        box-sizing:border-box;
+      }
+      
+      .left {
+        background-color:#2196F3;
+        padding:20px;
+        float:left;
+        width:20%; /* The width is 20%, by default */
+      }
+      
+      .main {
+        background-color:#f1f1f1;
+        padding:20px;
+        float:left;
+        width:60%; /* The width is 60%, by default */
+      }
+      
+      .right {
+        background-color:#4CAF50;
+        padding:20px;
+        float:left;
+        width:20%; /* The width is 20%, by default */
+      }
+      
+      /* Use a media query to add a break point at 800px: */
+      @media screen and (max-width:800px) {
+        .left, .main, .right {
+          width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+        }
+      }
+      </style>
+        
+</head>
+
+<body>
+  
+  <!--
+    Code source adapted from: https://www.w3schools.com/html/html_responsive.asp
+   -->
+
+  <img src="groups-mini-project-2.png" style="width:100%;">
+  <!--
+    f the CSS width property is set to 100%, 
+    the image will be responsive and scale up and down
+  -->
+
+  <img src="groups-mini-project-2.png" style="max-width:100%;height:auto;">
+  <!--
+    To avoid scaling up the image to a larger size that
+    its original, use the max-width property instead of width.
+  -->
+
+  <!-- <picture>
+      <source srcset="img_smallflower.jpg" media="(max-width: 600px)">
+      <source srcset="img_flowers.jpg" media="(max-width: 1500px)">
+      <source srcset="flowers.jpg">
+      <img src="img_smallflower.jpg" alt="Flowers">
+  </picture> -->
+
+  <!--
+    It is also possible to use the HTML <picture> element 
+      to define different images for different browser window sizes.
+  -->
+
+  <h1 style="font-size:10vw">Hello World</h1>
+  
+  <!--
+    The text size can be set with a "vw" unit, which means the "viewport width".
+    Viewport is the browser window size. 
+    1vw = 1% of viewport width. If the viewport is 50cm wide, 1vw is 0.5cm.
+  -->
+
+  <div class="left">
+      <p>Left Menu</p>
+    </div>
+    
+  <div class="main">
+    <p>Main Content</p>
+  </div>
+  
+  <div class="right">
+    <p>Right Content</p>
+  </div>  
+
+</body>
+</html>
