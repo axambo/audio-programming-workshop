@@ -9,7 +9,10 @@
         - Listen to demonstration.
         - In pairs, do tasks 1-5.
 
-## ES6 - Classes        
+## ES6 - Classes   
+
+    - Go to [ES6 - Classes](https://www.tutorialspoint.com/es6/es6_classes.htm)
+        - Listen to demonstration.
 
 ## Audio Worklets
 
